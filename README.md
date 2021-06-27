@@ -27,8 +27,7 @@ print("Original list : " + str(test_list))
 res_list = [i for i, value in enumerate(test_list) if value == 3]
 print("New indices list : " + str(res_list))
 ```
-  > Original list : [1, 3, 4, 3, 6, 7]
-  > New indices list : [1, 3]
+  > Original list : [1, 3, 4, 3, 6, 7]\New indices list : [1, 3]
     - filter를 사용하는 방법도 있지만, enumerate가 더 직관적임
 
 
