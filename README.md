@@ -18,6 +18,8 @@ list.index(element) # list에서 element를 찾아 index값을 반환해줌
     - element가 문자나 문자열인 경우 대소문자를 구분
     - 값이 존재하지 않는다면 ValueError 반환
 
+
+
 - 인덱스가 여러개 일 때 (enumerate)
 ```python
 test_list = [1, 3, 4, 3, 6, 7]
@@ -25,9 +27,8 @@ print("Original list : " + str(test_list))
 res_list = [i for i, value in enumerate(test_list) if value == 3]
 print("New indices list : " + str(res_list))
 ```
-  | Original list : [1, 3, 4, 3, 6, 7]
-  New indices list : [1, 3]
-  | 
+  > Original list : [1, 3, 4, 3, 6, 7]
+  > New indices list : [1, 3]
     - filter를 사용하는 방법도 있지만, enumerate가 더 직관적임
 
 
