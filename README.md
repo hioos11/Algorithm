@@ -50,5 +50,5 @@ print("New indices list : " + str(res_list))
 import sys
 sys.setrecursionlimit(10 ** 6)
 ```
-이 두 코드를 추가하는 것이 필수적이다.
-파이썬의 기본 재귀 깊이 얕기 때문에 런타임 에러가 발생할 수 있다.
+    이 두 코드를 추가하는 것이 필수적이다.
+    파이썬의 기본 재귀 깊이 얕기 때문에 런타임 에러가 발생할 수 있다.
