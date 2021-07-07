@@ -6,3 +6,11 @@ for line in sys.stdin:
   
   ## 실패요인
   # input()과 stdin의 차이 알기
+
+ # try - catch 로 풀기
+while True:
+  try:
+    a,b = map(int, input().split())
+    print(a+b)
+  except:
+    break
