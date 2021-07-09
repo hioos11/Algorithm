@@ -9,11 +9,19 @@
     - 대소문자 구분
     - 값이 존재하지 않으면 ValueError 반환
     - [찾으려는 인덱스가 여러개인 경우](#리스트에서-인덱스-찾기)
-- list.extend(
+- list.extend(list2) : 리스트 뒤에 값을 추가
+- list.insert(index, value) : list[index] 뒤에 value 추가
+- list.sort() : 오름차순 정렬
+- list.reverse() : 내림차순 정렬
+
+#### 리스트와 문자열
+- 리스트와 문자열은 유사해서 서로 변환이 가능
+  - list = str.split() : 문자열을 리스트로 변환.
+  - "".join(list) : 리스트를 문자열로 변환.
 
 
 
-### 템플릿 만들어 놓기
+
 
 #### 그래프 리스트
 ```python
@@ -44,7 +52,6 @@ print("New indices list : " + str(res_list))
   - filter를 사용하는 방법도 있지만, enumerate가 더 직관적임
 
 
-### 백준 티어 골드 이상으로 만들기
 
 
 
