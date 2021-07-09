@@ -18,8 +18,17 @@
 - 리스트와 문자열은 유사해서 서로 변환이 가능
   - list = str.split() : 문자열을 리스트로 변환.
   - "".join(list) : 리스트를 문자열로 변환.
+```python
+str = "hello world"
+list = str.split()
+```
+>> ['hello', 'world']
 
-
+```python
+list = ['1', '2', '3', 'a', 'b', 'c']
+str = "".join(list)
+```
+>> 123abc
 
 
 
