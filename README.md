@@ -18,17 +18,20 @@
 - 리스트와 문자열은 유사해서 서로 변환이 가능
   - list = str.split() : 문자열을 리스트로 변환.
   - "".join(list) : 리스트를 문자열로 변환.
+    - join 메소드는 매개변수 리스트의 요소 하나하나 사이에 구분자를 끼워 넣어 문자열로 반환하는 
+
+
 ```python
 str = "hello world"
 list = str.split()
 ```
->> ['hello', 'world']
+> ['hello', 'world']
 
 ```python
 list = ['1', '2', '3', 'a', 'b', 'c']
-str = "".join(list)
+str = "구분자".join(list)
 ```
->> 123abc
+> 123abc
 
 
 
