@@ -18,8 +18,7 @@
 - 리스트와 문자열은 유사해서 서로 변환이 가능
   - list = str.split() : 문자열을 리스트로 변환.
   - "".join(list) : 리스트를 문자열로 변환.
-    - join 메소드는 매개변수 리스트의 요소 하나하나 사이에 구분자를 끼워 넣어 문자열로 반환하는 
-
+    - join 메소드는 매개변수 리스트의 요소 하나하나 사이에 구분자를 끼워 넣어 문자열로 반환한다.
 
 ```python
 str = "hello world"
@@ -44,14 +43,6 @@ list = [[0] * N] # 방식은모든 행이같은 객체로 인식되어 list[1][1
 ```
 
 #### 리스트에서 인덱스 찾기
-- 인덱스가 하나 일 때 (index)
-```python
-list.index(element) # list에서 element를 찾아 index값을 반환해줌
-```
-    - element가 문자나 문자열인 경우 대소문자를 구분
-    - 값이 존재하지 않는다면 ValueError 반환
-
-
 
 - 인덱스가 여러개 일 때 (enumerate)
 ```python
