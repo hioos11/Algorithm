@@ -55,10 +55,10 @@ print("New indices list : " + str(res_list))
   - filter를 사용하는 방법도 있지만, enumerate가 더 직관적임
 
 
+<br><br><br>
 
 
-
-### 런타임에러 발생시 고려 사항
+## 런타임에러 발생시 고려 사항
 1. 배열에 할당된 크기를 넘어서 접근했을 때
 2. 전역 배열의 크기가 메모리 제한을 초과할 때
 3. 지역 배열의 크기가 스택 크기 제한을 넘어갈 때
@@ -67,8 +67,9 @@ print("New indices list : " + str(res_list))
 6. 재귀 호출이 너무 깊어질 때
 7. 이미 해제된 메모리를 또 참조할 때
 
-### 파이썬 코딩테스트 팁
-#### 재귀함수로 풀 때
+<br><br><br>
+## 파이썬 코딩테스트 팁
+### 재귀함수로 풀 때
 ```python
 import sys
 sys.setrecursionlimit(10 ** 6)
