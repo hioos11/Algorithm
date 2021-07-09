@@ -2,13 +2,13 @@
 > 템플릿 만들어 놓기<br>
 > 백준 티어 골드 이상으로 만들기<br>
 > 
-## Python 문법 정리
+## 1. Python 문법 정리
 
 ### list 관련 메소드
 - list.index(value) : 리스트에서 value를 찾아 index값 반환
     - 대소문자 구분
     - 값이 존재하지 않으면 ValueError 반환
-    - [찾으려는 인덱스가 여러개인 경우](#리스트에서-인덱스-찾기)
+    - [찾으려는 인덱스가 여러개인 경우](#리스트에서-찾으려는-value가-여러 개인-경우-인덱스-찾기)
 - list.extend(list2) : 리스트 뒤에 값을 추가
 - list.insert(index, value) : list[index] 뒤에 value 추가
 - list.sort() : 오름차순 정렬
@@ -32,33 +32,38 @@ str = "구분자".join(list)
 ```
 > 123abc
 
-
+<br><br>
 
 #### 그래프 리스트
 ```python
-list = [[0] * N for _ in range(N)]  # N * N 크기의 0으로 초기화 된 그래프 리스트 생성
+# N * N 크기의 0으로 초기화 된 그래프 리스트 생성
+list = [[0] * N for _ in range(N)]  
 
-
-list = [[0] * N] # 방식은모든 행이같은 객체로 인식되어 list[1][1]의 값을 변경해도 모든 1열의 값이 같은 값으로 변경됨
+# 이 방식은 모든 행이 같은 객체로 인식되어 
+# list[1][1]의 값을 변경해도 모든 1열의 값이 같은 값으로 변경됨
+list = [[0] * N] 
 ```
 
-#### 리스트에서 인덱스 찾기
+#### 리스트에서 찾으려는 value가 여러 개인 경우 인덱스 찾기
 
-- 인덱스가 여러개 일 때 (enumerate)
+- enumerate 사용
+- filter를 사용하는 방법도 있지만, enumerate가 더 직관적임
 ```python
+# test_list에서 value가 3인 인덱스를 모두 찾아 res_list에 인덱스 저장
 test_list = [1, 3, 4, 3, 6, 7]
 print("Original list : " + str(test_list))
 res_list = [i for i, value in enumerate(test_list) if value == 3]
 print("New indices list : " + str(res_list))
 ```
-  > Original list : [1, 3, 4, 3, 6, 7] <br/> New indices list : [1, 3]
-  - filter를 사용하는 방법도 있지만, enumerate가 더 직관적임
+  > Original list : [1, 3, 4, 3, 6, 7] <br/> 
+  > New indices list : [1, 3]
+  
 
 
 <br><br><br>
 
 
-## 런타임에러 발생시 고려 사항
+## 2. 런타임에러 발생시 고려 사항
 1. 배열에 할당된 크기를 넘어서 접근했을 때
 2. 전역 배열의 크기가 메모리 제한을 초과할 때
 3. 지역 배열의 크기가 스택 크기 제한을 넘어갈 때
@@ -68,11 +73,12 @@ print("New indices list : " + str(res_list))
 7. 이미 해제된 메모리를 또 참조할 때
 
 <br><br><br>
-## 파이썬 코딩테스트 팁
+## 3. 파이썬 코딩테스트 팁
 ### 재귀함수로 풀 때
 ```python
+# 파이썬의 기본 재귀 깊이가 얕기 때문에 런타임 에러가 발생할 수 있다.
+# 따라서 이 두 코드를 추가하는 것이 필수적이다.
 import sys
 sys.setrecursionlimit(10 ** 6)
 ```
-    이 두 코드를 추가하는 것이 필수적이다.
-    파이썬의 기본 재귀 깊이 얕기 때문에 런타임 에러가 발생할 수 있다.
+    
