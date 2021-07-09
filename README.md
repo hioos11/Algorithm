@@ -1,4 +1,17 @@
 # Algorithm
+> 템플릿 만들어 놓기<br>
+> 백준 티어 골드 이상으로 만들기<br>
+> 
+## Python 문법 정리
+
+### list 관련 메소드
+- list.index(value) : 리스트에서 value를 찾아 index값 반환
+    - 대소문자 구분
+    - 값이 존재하지 않으면 ValueError 반환
+    - [찾으려는 인덱스가 여러개인 경우](#### 리스트에서 인덱스 찾기)
+- list.extend(
+
+
 
 ### 템플릿 만들어 놓기
 
