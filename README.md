@@ -58,7 +58,21 @@ print("New indices list : " + str(res_list))
   > Original list : [1, 3, 4, 3, 6, 7] <br/> 
   > New indices list : [1, 3]
   
+### zip
 
+
+### collections
+
+
+### enumerate
+- 반복문을 사용할 때 몇번째 반복문인지 확인 가능
+- (인덱스번호, 원소) tuple형태로 반환
+```python
+t = [1, 5, 7, 33, 39, 52]
+for p in enumerate(t):
+    print(p)
+```
+> (0, 1)<br>(1, 5)<br>(2, 7)<br>(3, 33)<br>(4, 39)<br>(5, 52)
 
 <br><br><br>
 
