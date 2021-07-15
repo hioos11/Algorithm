@@ -58,17 +58,48 @@ print("New indices list : " + str(res_list))
 ```
   > Original list : [1, 3, 4, 3, 6, 7] <br/> 
   > New indices list : [1, 3]
-  
+
+### 문자열 관련 메소드
+- str.replace("검색 문자", "치환 문자" [, 치환 횟수]) : str에 "검색 문자"가 있다면 "치환 문자"로 바꿔준다
+	- 검색 문자 : 문자열에서 찾을 문자를 지정
+	- 치환 문자 : 변경하고 싶은 문자
+	- 치환 횟수 : 치환하고 싶은 횟수(생략 가능)
+```python
+text = "orange, apple, melon, orange, grape, orange"
+text_replace = text.replace("orange", "banana", 2)
+```
+> banana, apple, melon, banana, grape, orange<br>text에는 "orange"가 3개 있지만 치환 횟수를 2로 지정했기 떄문에 앞에서 두 개만 "banana"로 치환된다.
+
+
+
 ### zip
 - 여러 개의 순회 가능한(iterable) 객체를 인자로 받고, 각 객체가 담고 있는 원소에 차례로 접근할 수 있는 반복자(iterator)를 반환한다.
+- 만약, zip으로 넘기는 인자의 길이가 서로 다른 경우 짧은 인자를 기준으로 데이터가 묶이고 나머지는 버려진다.
 ```python
-numbers = [1, 2, 3]
+numbers = [1, 2, 3, 4, 5]
 letters = ['a', 'b', 'c']
 
 for pair in zip(numbers, letters):
 	print(pair)
 ```
-> (1, 'A')<br>(2, 'B')<br>(3, 'C')
+> (1, 'a')<br>(2, 'b')<br>(3, 'c')
+
+#### unzip
+- zip() 함수로 묶어 놓은 데이터를 다시 해체할 때 사용
+```python
+numbers = [1, 2, 3]
+letters = ['a', 'b', 'c']
+pairs = list(zip(numbers, letters))
+```
+>[(1, 'a'), (2, 'b'), (3, 'c')]
+- 리스트 앞에 unpacking 연산자(*)를 붙여 zip()함수에 넘기면 분리되어 반환된다.
+```python
+numbers, letters = zip(*pairs)
+```
+>(1, 2, 3) ('a', 'b', 'c')
+
+#### zip -> dict
+- 두 개의 리스트를 zip() 함수를 통해 하나로 묶어 dictionary로 쉽게 만들 수 있다.
 
 
 ### collections
@@ -83,6 +114,10 @@ for p in enumerate(t):
     print(p)
 ```
 > (0, 1)<br>(1, 5)<br>(2, 7)<br>(3, 33)<br>(4, 39)<br>(5, 52)
+
+### 아스키코드
+- 문자 -> 아스키코드 : ord(65)	=> A
+- 아스키코드 -> 문자 : chr('A')	=> 65
 
 <br><br><br>
 ## 2. 알고리즘 분류
