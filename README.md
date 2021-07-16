@@ -4,7 +4,7 @@
 > 
 ## 1. Python 문법 정리
 
-### list 관련 메소드
+### 1. list 관련 메소드
 - list.index(value) : 리스트에서 value를 찾아 index값 반환
     - 대소문자 구분
     - 값이 존재하지 않으면 ValueError 반환
@@ -59,7 +59,7 @@ print("New indices list : " + str(res_list))
   > Original list : [1, 3, 4, 3, 6, 7] <br/> 
   > New indices list : [1, 3]
 
-### 문자열 관련 메소드
+### 2. 문자열 관련 메소드
 - str.replace("검색 문자", "치환 문자" [, 치환 횟수]) : str에 "검색 문자"가 있다면 "치환 문자"로 바꿔준다
 	- 검색 문자 : 문자열에서 찾을 문자를 지정
 	- 치환 문자 : 변경하고 싶은 문자
@@ -72,7 +72,7 @@ text_replace = text.replace("orange", "banana", 2)
 
 
 
-### zip
+### 3. zip
 - 여러 개의 순회 가능한(iterable) 객체를 인자로 받고, 각 객체가 담고 있는 원소에 차례로 접근할 수 있는 반복자(iterator)를 반환한다.
 - 만약, zip으로 넘기는 인자의 길이가 서로 다른 경우 짧은 인자를 기준으로 데이터가 묶이고 나머지는 버려진다.
 ```python
@@ -102,10 +102,10 @@ numbers, letters = zip(*pairs)
 - 두 개의 리스트를 zip() 함수를 통해 하나로 묶어 dictionary로 쉽게 만들 수 있다.
 
 
-### collections
+### 4. collections
 
 
-### enumerate
+### 5. enumerate
 - 반복문을 사용할 때 몇번째 반복문인지 확인 가능
 - (인덱스번호, 원소) tuple형태로 반환
 ```python
@@ -115,9 +115,37 @@ for p in enumerate(t):
 ```
 > (0, 1)<br>(1, 5)<br>(2, 7)<br>(3, 33)<br>(4, 39)<br>(5, 52)
 
-### 아스키코드
+### 6. 아스키코드
 - 문자 -> 아스키코드 : ord(65)	=> A
 - 아스키코드 -> 문자 : chr('A')	=> 65
+
+### 7. 순열과 조합
+#### 순열
+	- n개의 원소를 사용해 순서를 정하여 r개의 배열로 나타내는 것.
+	- 순서가 있어 원소의 종류가 같아도 순서가 다르면 다른 배열.
+	- nPr = n! / (n-r)!
+```python
+from itertools import permutations
+
+a = [1, 2, 3]
+p = permutations(a, 2)
+print(list(p))	
+```
+> [(1, 2), (1, 3), (2, 1), (2, 3), (3, 1), (3, 2)]
+
+#### 조합
+	- n개의 원소를 사용해서 순서에 관계없이 r개의 배열로 나타내는 것.
+	- 순서가 없어 원소의 종류가 같으면 같은 배열.
+	- nCr = nPr / r!
+```python
+from itertools import combinations
+
+a = [1, 2, 3]
+c = combinations(a, 2)
+
+print(list(c))
+```
+> [(1, 2), (1, 3), (2, 3)]
 
 <br><br><br>
 ## 2. 알고리즘 분류
