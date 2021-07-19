@@ -11,7 +11,7 @@
     - [찾으려는 인덱스가 여러개인 경우](#리스트에서-찾으려는-value가-여러-개인-경우-인덱스-찾기)
 - list.extend(list2) : 리스트 뒤에 값을 추가
 - list.insert(index, value) : list[index] 뒤에 value 추가
-- list.sort() : 오름차순 정렬
+- list.sort() : 오름차순 정렬 (#9.-sort와-sorted)
 - list.reverse() : 내림차순 정렬
 - list[-1] : list.pop()을 하면 가장 마지막 원소를 제거하고 가져오지만 제거하지 않고 가져만 올 때에는 [-1]을 사용한다.
 
@@ -59,6 +59,9 @@ print("New indices list : " + str(res_list))
   > Original list : [1, 3, 4, 3, 6, 7] <br/> 
   > New indices list : [1, 3]
 
+#### 리스트 swap
+
+
 ### 2. 문자열 관련 메소드
 - str.replace("검색 문자", "치환 문자" [, 치환 횟수]) : str에 "검색 문자"가 있다면 "치환 문자"로 바꿔준다
 	- 검색 문자 : 문자열에서 찾을 문자를 지정
@@ -69,8 +72,9 @@ text = "orange, apple, melon, orange, grape, orange"
 text_replace = text.replace("orange", "banana", 2)
 ```
 > banana, apple, melon, banana, grape, orange<br>text에는 "orange"가 3개 있지만 치환 횟수를 2로 지정했기 떄문에 앞에서 두 개만 "banana"로 치환된다.
-
-
+- index = str.find(문자, 시작위치) : 문자열 str의 인덱스 2부터 문자를 찾아 인덱스를 반환한다. 만약 시작위치가 생략되면 인덱스 0인 처음부터 찾는다.
+	- 찾지 못하는 경우, -1을 반환 (_리스트 메소드인 index와 다른 점_)
+	- rfind를 사용하면 뒤에서부터 찾을 수 있다.
 
 ### 3. zip
 - 여러 개의 순회 가능한(iterable) 객체를 인자로 받고, 각 객체가 담고 있는 원소에 차례로 접근할 수 있는 반복자(iterator)를 반환한다.
@@ -146,6 +150,16 @@ c = combinations(a, 2)
 print(list(c))
 ```
 > [(1, 2), (1, 3), (2, 3)]
+
+
+### 8. 딕셔너리
+
+
+### 9. sort와 sorted
+- sort는 **list.sort()** 방식으로 사용해 리스트 자체가 정렬된다.
+- sorted는 sorted_list = sorted(list) 방식으로 사용되며 list 자체는 정렬되지 않고 list가 정렬된 결과가 반환되어 sorted_list에 저장된다.
+
+
 
 <br><br><br>
 ## 2. 알고리즘 분류
