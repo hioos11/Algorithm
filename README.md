@@ -59,8 +59,6 @@ print("New indices list : " + str(res_list))
   > Original list : [1, 3, 4, 3, 6, 7] <br/> 
   > New indices list : [1, 3]
 
-#### 리스트 swap
-
 
 ### 2. 문자열 관련 메소드
 - str.replace("검색 문자", "치환 문자" [, 치환 횟수]) : str에 "검색 문자"가 있다면 "치환 문자"로 바꿔준다
@@ -159,7 +157,9 @@ print(list(c))
 - sort는 **list.sort()** 방식으로 사용해 리스트 자체가 정렬된다.
 - sorted는 sorted_list = sorted(list) 방식으로 사용되며 list 자체는 정렬되지 않고 list가 정렬된 결과가 반환되어 sorted_list에 저장된다.
 
-
+### 10. swap
+- 다른 언어와 다르게 python은 두 변수의 값을 바꿀 때 별도의 변수가 필요 없다.
+- a, b = b, a 한 줄로 a와 b를 바꿀 수 있다.
 
 <br><br><br>
 ## 2. 알고리즘 분류
