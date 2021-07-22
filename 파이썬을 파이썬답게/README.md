@@ -39,3 +39,23 @@ print(int('1010', base = 2))
 - str.ljust(n) : 길이 n에 str을 왼쪽 정렬
 - str.center(n) : 길이 n에 str을 가운데 정렬
 - str.rjust(n) : 길이 n에 str을 오른쪽 정렬
+
+### 4. string 모듈
+몇 가지 데이터들을 상수로 정의해 문자열로 반환
+- string.ascii_lowercase : a ~ z까지 알파벳 소문자
+- string.ascii_uppercase : A ~ Z까지 알파벳 대문자
+- string.ascii_letters : a ~ Z까지 알파벳 소문자, 대문자
+- string.digits : 숫자 0 ~ 9
+- string.hexdigits : 16진수 0 ~ F
+- string.octdigits : 8진수 0 ~ 7
+
+### 5. sorted
+sort() 함수를 사용하면 원본 리스트의 원소를 정렬
+원본 리스트의 순서를 변경하지 않고 정렬된 데이터를 구하려면 sorted 사용
+```python
+list1 = [3, 2, 1]
+list2 = sorted(list1)
+print(list1)
+print(list2)
+```
+>[3, 2, 1]<br/>[1, 2, 3]
