@@ -215,9 +215,13 @@ print(answer)
 ```
 > [1, 2, 3, 4, 5, 6]
 
-- itertools.chain() : iterable 객체의 모든 요소들을 
-- itertools.chain.from_iterable()
+- itertools.chain(iterable 객체) : iterable 객체의 모든 요소들을 하나로 연결해준다.
+	- list(itertools.chain('ABC','DEF')) # ['A', 'B', 'C', 'D', 'E', 'F']
+	- list(itertools.chain([[1, 2], [3, 4], [5, 6], [7, 8, 9]])) # [[1, 2], [3, 4], [5, 6], [7, 8, 9]]
 
+- itertools.chain.from_iterable(iterable 객체) : 하나의 iterator만 전달해도 iterator의 모든 요소들을 연결해 반환
+	- list(itertools.chain.from_iterable(['ABC', 'DEF'])) # ['A', 'B', 'C', 'D', 'E', 'F']
+	- list(itertools.chain.from_iterable([[1, 2], [3, 4], [5, 6], [7, 8, 9]]))) # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 3. itertools, unpacking
 ```python
@@ -227,48 +231,128 @@ answer = list(itertools.chain(*my_list))
 print(answer)
 ```
 > [1, 2, 3, 4, 5, 6]
+- chain에 2차원 리스트를 인자로 넘기면 원하는 결과값을 얻을 수 없으므로 2차원 리스트를 unpacking 한 후 chain 함수에 넘겨야 원하는 결과를 얻을 수 있다.
+- chain 함수는 단순히 iterable 객체의 요소들을 하나로 엮기 때문이다.
 
 4. list comprehension
+반복되거나 특정 조건을 만족하는 리스트를 보다 쉽게 만들어내기 위한 방법
 ```python
 my_list = [[1, 2], [3, 4], [5, 6]]
-answer = [element for array in my_list for element in array]
+answer = [element for array in my_list for element in array] # 반복문을 사용한 comprehension
 print(answer)
+
+# list comprehension을 풀어 쓴 방법 (같은 결과)
+answer2 = []
+for array in my_list:
+	for element in array:
+		answer2.append(element)
 ```
 > [1, 2, 3, 4, 5, 6]
-
 
 5. reduce - 1
 ```python 
-my_list = [[1, 2], [3, 4], [5, 6]]
 from functools import reduce
+
+my_list = [[1, 2], [3, 4], [5, 6]]
 answer = list(reduce(lambda x, y: x+y, my_list))
 print(answer)
-
 ```
 > [1, 2, 3, 4, 5, 6]
-
+- functiontools.reduce(function, iterable) :  
+	- 여러 개의 데이터를 대상으로 누적 집계를 내기 위해 주로 사용
+	- reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) -> ((((1+2)+3)+4)+5)
+- 따라서 위의 예시도 (([1, 2] + [3, 4]) + [5, 6])이 계산되어 원하는 [1, 2, 3, 4, 5, 6]이 도출된다.
 
 6. reduce - 2
 ```python
-my_list = [[1, 2], [3, 4], [5, 6]]
 from functools import reduce
 import operator
+
+my_list = [[1, 2], [3, 4], [5, 6]]
 answer = list(reduce(operator.add, my_list))
 print(answer)
-
 ```
 > [1, 2, 3, 4, 5, 6]
 
 
 7. numpy 라이브러리 flatten
 ```python
-my_list = [[1, 2], [3, 4], [5, 6]]
 import numpy as np
+
+my_list = [[1, 2], [3, 4], [5, 6]]
 answer = np.array(my_list).flatten().tolist()
 print(answer)
 ```
 > [1, 2, 3, 4, 5, 6]
+- numpy.array(list).flatten() : 다차원 리스트를 1차원 리스트로 펴준다. 단, 모든 원소의 길이가 같아야 한다. 길이가 다르다면 에러 발생.
 
+### 13. 순열과 조합 - combinations, permutations
+#### 순열
+	- n개의 원소를 사용해 순서를 정하여 r개의 배열로 나타내는 것.
+	- 순서가 있어 원소의 종류가 같아도 순서가 다르면 다른 배열.
+	- nPr = n! / (n-r)!
+```python
+from itertools import permutations
 
+a = [1, 2, 3]
+p = permutations(a, 2)
+print(list(p))	
+```
+> [(1, 2), (1, 3), (2, 1), (2, 3), (3, 1), (3, 2)]
 
+#### 조합
+	- n개의 원소를 사용해서 순서에 관계없이 r개의 배열로 나타내는 것.
+	- 순서가 없어 원소의 종류가 같으면 같은 배열.
+	- nCr = nPr / r!
+```python
+from itertools import combinations
+
+a = [1, 2, 3]
+c = combinations(a, 2)
+
+print(list(c))
+```
+> [(1, 2), (1, 3), (2, 3)]
+
+### 14. 가장 많이 등장하는 알파벳 찾기 - Counter
+- collections.Counter(iterable) : 해시 가능한 객체를 세기 위한 클래스.
+	- 요소는 딕셔너리 키로, 개수는 딕셔너리 값으로 저장된다.
+```python
+import collections
+my_str = 'dfdefdgf'	 # 'bbaa' 'aab'
+answer = dict(collections.Counter(my_str))
+
+max_val = -1
+keys = []
+for key, val in answer.items():
+	if val > max_val:
+		keys.clear()
+		keys.append(key)
+		max_val = val
+	elif val == max_val:
+		keys.append(key)
+keys.sort()
+print(''.join(keys))
+```
+
+```python
+# 더 간단한 다른사람 풀이
+from collections import Counter
+
+my_str = input().strip()
+max_count = max(Counter(my_str).values())
+print(''.join(sorted([k for k,v in Counter(my_str).items() if v == max_count])))
+```
+> df
+
+```python
+import collections
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 7, 9, 1, 2, 3, 3, 5, 2, 6, 8, 9, 0, 1, 1, 4, 7, 0]
+answer = collections.Counter(my_list)
+print(answer)
+```
+> Counter({1: 4, 2: 3, 3: 3, 7: 3, 4: 2, 5: 2, 6: 2, 8: 2, 9: 2, 0: 2})
+딕셔너리 형태로 바꿔주기 위해서는 dict(answer)처리만 하면 딕셔너리 타입으로 변환된다.
+
+### 15. for 문과 if문을 한번에 - List comprehension의 if 문
 
