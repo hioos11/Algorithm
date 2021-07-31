@@ -354,5 +354,72 @@ print(answer)
 > Counter({1: 4, 2: 3, 3: 3, 7: 3, 4: 2, 5: 2, 6: 2, 8: 2, 9: 2, 0: 2})
 딕셔너리 형태로 바꿔주기 위해서는 dict(answer)처리만 하면 딕셔너리 타입으로 변환된다.
 
-### 15. for 문과 if문을 한번에 - List comprehension의 if 문
+### 15. for문과 if문을 한번에 - List comprehension의 if 문
+- 반복문을 사용한 Comprehension
+```python
+[i for i in range(10)] # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[i * 3 for i in range(10)] # [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]
+[i + 2 for i in range(10)] # [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+```
+- 조건문을 사용한 Comprehension
+반복문 뒤에 조건문을 적어 반복문의 인자가 조건을 만족해야만 리스트의 요소가 됨
+```python
+[i for i in range(20) if i%2 == 0] # [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+[i * 10 for i in range(20) if i%3 == 0] # [0, 30, 60, 90, 120, 150, 180]
+```
+- 두 개의 반복문 사용하기
+앞의 for문의 각 요소에 뒤의 for문을 적용
+```python
+a = ['a', 'b', 'c']
+b = ['1', '2', '3']
+[i+j for i in a for j in b] # ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3']
+```
+- 두 개의 조건문 사용하기
+```python
+두 개의 조건문에 and연산이 적용되어 두개의 조건이 모두 만족해야만 리스트의 요소가 됨 
+[i for i in range(50) if i%2 == 0 if i%3 == 0] # [0, 6, 12, 18, 24, 30, 36, 42, 48]
+```
+
+### 16. flag 대신 for-else 사용하기
+if-else가 아닌 for-else는 for문이 중간에 break 등으로 끊기지 않고 끝까지 수행되었을 때 else문이 실행된다.
+이 문법을 사용해 flag를 사용해 처리했던 코드를 조금 더 가독성 있고 간결하게 짤 수 있다.
+```python
+data = [1, 2, 3, 4, 5]
+for i in data:
+	if i > 5:
+		break
+else:
+	print('5보다 큰 수 없음')
+```
+
+### 17. 두 변수의 값 바꾸기 - swap
+```python
+a = 3
+b = 'abc'
+print(a, b)
+a, b = b, a # temp 같은 별도의 변수가 필요 없다
+print(a, b)
+```
+> 3 abc<br/>abc 3
+
+### 18. 이진 탐색하기 - binary search
+- 이진탐색 : 데이터가 정렬된 배열에서 특정한 값을 찾아내는 알고리즘. 검색속도가 굉장히 빠르다.
+- 파이썬은 bisect.bisect 메소드를 사용해 쉽게 사용할 수 있다.
+- bisect(iterable, x) : iterable에 x가 들어갈 위치를 리턴
+- bisect_left(iterable, x) : x가 iterable에 존재한다면 x의 위치를 리턴
+- bisect_right(iterable, x) : x가 iterable에 존재한다면 x와 동일한 값 바로 뒤 위치를 리턴
+```python
+import bisect
+data = [1, 2, 3, 7, 9, 11, 33, 40]
+print(bisect.bisect_left(data, 6)) # 3
+print(bisect.bisect_right(data, 6)) # 3
+print(bisect.bisect(data, 6)) # 3
+
+print(bisect.bisect_left(data, 7)) # 3
+print(bisect.bisect_right(data, 7)) # 4
+print(bisect.bisect(data, 7)) # 4
+```
+
+### 19. 클래스 인스턴스 출력하기 - class의 자동 string casting
+
 
