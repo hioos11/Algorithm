@@ -161,6 +161,10 @@ print(list(c))
 - 다른 언어와 다르게 python은 두 변수의 값을 바꿀 때 별도의 변수가 필요 없다.
 - a, b = b, a 한 줄로 a와 b를 바꿀 수 있다.
 
+### 11. int형 리스트 요소들을 str로 바꾸기
+data = [1, 2, 3, 4, 5, 6, 7]
+int_str = int(''.join(map(str, data)))
+
 <br><br><br>
 ## 2. 알고리즘 분류
 
