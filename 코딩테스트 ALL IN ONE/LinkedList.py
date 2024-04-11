@@ -9,6 +9,8 @@ array는 메모리상에서도 연속적으로 저장되어있지만 linked list
 
 또한 linked lists는 메모리상에서 연속성을 유지하지 않아도 되기 때문에 메모리 사용이 자유롭다.
 하지만 next node의 address를 추가적으로 저장해야 하기 때문에 데이터 하나당 차지하는 메모리는 더 커진다.
+
+linked list는 코딩테스트에서 자주 나오는 유형은 아니지만 트리나 다른 자료구조를 구현할 때 linked list를 알아야 한다.
 '''
 class Node:
     def __init__(self, value = 0, next = None):
@@ -31,7 +33,8 @@ class LinkedList(object):
     def __init__(self):
         self.head = None
         self.tail = None # 시간복잡도 O(1)의 append 구현할 때 사용
-    def append(self, value):
+
+    def append1(self, value):
         new_node = Node(value)
         if self.head is None:
             self.head = new_node
@@ -60,7 +63,7 @@ class LinkedList(object):
         new_node = Node(value)
         current = self.head
 
-        for _ in range(idx):
+        for _ in range(idx-1):  # 직전 원소까지 이동해야 하니까 idx-1
             current = current.next
         
         # 기존 노드를 먼저 새로운 노드에 연결해야함
@@ -71,7 +74,7 @@ class LinkedList(object):
         # 원하는 idx의 value 값 삭제
         current = self.head
 
-        for _ in range(idx):
+        for _ in range(idx-1): # 얘도 직전 원소까지 이동해야 하니까 idx - 1
             current = current.next
 
         # current = idx - 1
@@ -79,7 +82,7 @@ class LinkedList(object):
         current.next = current.next.next
 
 
-    def append(self, value):
+    def append2(self, value):
         # insert_back
         # 시간복잡도 O(1)으로 구현하기
         # 마지막 노드를 가리키는 tail 사용해서 구현하기
@@ -93,3 +96,25 @@ class LinkedList(object):
             self.tail.next = new_node
             self.tail = self.tail.next
 
+ll = LinkedList()
+
+ll.append1(1)
+ll.append1(2)
+ll.append1(3)
+ll.append1(5)
+ll.append1(7)
+ll.append1(8)
+# 1, 2, 3, 5, 7, 8
+
+ll.insert(3, 10)
+# 1, 2, 3, 10, 5, 7, 8
+
+ll.remove(1)
+# 1, 3, 10, 5, 7, 8
+
+print(ll.get(0))
+print(ll.get(1))
+print(ll.get(2))
+print(ll.get(3))
+print(ll.get(4))
+print(ll.get(5))
