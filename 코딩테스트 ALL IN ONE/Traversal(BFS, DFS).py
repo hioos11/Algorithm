@@ -37,6 +37,11 @@ DFS를 구현하는 방법은 두 가지가 있는데
 1. stack을 이용해 반복문으로 구현
 2. 재귀를 이용해서 구현
 
-
-
 '''
+# 재귀로 구현한 DFS
+def dfs(cur_node):
+    if cur_node is None:
+        return
+    
+    dfs(cur_node.left)
+    dfs(cur_node.right)
